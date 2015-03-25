@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=/home/jatorresmo/Documents/Experimento1/MIniAlu/impact.xsl
+OUTFILE=/home/jatorresmo/Documents/Experimento1/MIniAlu/impact.xsl
+FAMILY=Multiple
+PART=Multiple
+WORKINGDIR=/home/jatorresmo/Documents/Experimento1/MIniAlu
+LICENSE=iMPACT
+USER_INFO=iMPACT
