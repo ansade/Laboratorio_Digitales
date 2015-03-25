@@ -48,7 +48,7 @@ sumador sum2 ( OpA1,OpB1,result1,carry_out,carry_out1);
 
 sumador sum3 ( OpA2,OpB2,result2,carry_out1,carry_out2);
 
-sumador sum4 ( OpA3,OpB3,result,carry_out2,carry_out3);
+sumador sum4 ( OpA3,OpB3,result3,carry_out2,carry_out3);
 
 
 
@@ -61,14 +61,13 @@ module testbench;
 
 reg   OpA, OpB,OpA1, OpB1,OpA2, OpB2,OpA3, OpB3;
 
-wire carry_in;
+reg  carry_in;
+wire result;
+wire result1;
+wire result2;
+wire result3;
 
-wire  result,
-wire  result1,
-wire  result2,
-wire  result3,
-
-wire carry_out3
+wire carry_out3;
 
 
 /*reg  OpA,OpB;
