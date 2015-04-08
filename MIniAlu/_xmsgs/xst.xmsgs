@@ -5,10 +5,19 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="Xst" num="2472" delta="old" >Top module &lt;<arg fmt="%s" index="1">tb</arg>&gt; was not found.
+<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;../MiniAlu.v&quot; line 46 </arg>Connection to input port &apos;<arg fmt="%s" index="2">Initial</arg>&apos; does not match port size
 </msg>
 
-<msg type="error" file="Xst" num="2469" delta="old" >Please specify the correct library via the -work_lib switch.
+<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;../MiniAlu.v&quot; line 57 </arg>Connection to input port &apos;<arg fmt="%s" index="2">D</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;../MiniAlu.v&quot; line 58 </arg>Connection to output port &apos;<arg fmt="%s" index="2">Q</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;../MiniAlu.v&quot; line 95 </arg>Connection to input port &apos;<arg fmt="%s" index="2">D</arg>&apos; does not match port size
+</msg>
+
+<msg type="error" file="Xst" num="0" delta="new" ><arg fmt="%s" index="1">&quot;../TestBench.v&quot; line 25: </arg>Module &lt;<arg fmt="%s" index="2">TestBench</arg>&gt; has no port.
 </msg>
 
 </messages>

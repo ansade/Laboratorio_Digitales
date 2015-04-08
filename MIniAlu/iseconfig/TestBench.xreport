@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2015-03-11T11:29:39</DateModified>
-  <ModuleName>MiniAlu</ModuleName>
+  <DateModified>2015-04-08T10:37:38</DateModified>
+  <ModuleName>TestBench</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>/home/jatorresmo/Documents/Experimento1/MIniAlu/iseconfig/TestBench.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/jatorresmo/Documents/Experimento1/MIniAlu</ImplementationReportsDirectory>
+  <SavedFilePath>/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/iseconfig/TestBench.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/</ImplementationReportsDirectory>
   <DateInitialized>2015-03-11T11:29:38</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

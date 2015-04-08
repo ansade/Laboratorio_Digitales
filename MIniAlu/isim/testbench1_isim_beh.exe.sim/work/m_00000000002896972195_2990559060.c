@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/home/jatorresmo/Documents/Experimento1/MIniAlu/sumador.v";
+static const char *ng0 = "/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/sumador.v";
 
 
 

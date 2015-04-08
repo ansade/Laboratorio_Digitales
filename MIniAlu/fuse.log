@@ -1,28 +1,24 @@
-Running: /opt/Xilinx/14.4/ISE_DS/ISE/bin/lin/unwrapped/fuse -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o /home/jatorresmo/Documents/Experimento1/MIniAlu/testbench1_isim_beh.exe -prj /home/jatorresmo/Documents/Experimento1/MIniAlu/testbench1_beh.prj work.testbench1 work.glbl 
+Running: /opt/Xilinx/14.4/ISE_DS/ISE/bin/lin/unwrapped/fuse -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o /home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/testbench1_isim_beh.exe -prj /home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/testbench1_beh.prj work.testbench1 work.glbl 
 ISim P.49d (signature 0xfbc00daa)
 Number of CPUs detected in this system: 2
 Turning on mult-threading, number of parallel sub-compilation jobs: 4 
 Determining compilation order of HDL files
-Analyzing Verilog file "/home/jatorresmo/Documents/Experimento1/MIniAlu/sumador.v" into library work
-Analyzing Verilog file "/home/jatorresmo/Documents/Experimento1/MIniAlu/tb.v" into library work
+Analyzing Verilog file "/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/sumador.v" into library work
+Analyzing Verilog file "/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/fila.v" into library work
+Analyzing Verilog file "/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.4/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:189 - "/home/jatorresmo/Documents/Experimento1/MIniAlu/tb.v" Line 21: Size mismatch in connection of port <wResult>. Formal port size is 1-bit while actual signal size is 4-bit.
-WARNING:HDLCompiler:189 - "/home/jatorresmo/Documents/Experimento1/MIniAlu/tb.v" Line 22: Size mismatch in connection of port <wCarry>. Formal port size is 1-bit while actual signal size is 4-bit.
-WARNING:HDLCompiler:189 - "/home/jatorresmo/Documents/Experimento1/MIniAlu/tb.v" Line 29: Size mismatch in connection of port <wResult>. Formal port size is 1-bit while actual signal size is 4-bit.
-WARNING:HDLCompiler:189 - "/home/jatorresmo/Documents/Experimento1/MIniAlu/tb.v" Line 30: Size mismatch in connection of port <wCarry>. Formal port size is 1-bit while actual signal size is 4-bit.
-WARNING:HDLCompiler:189 - "/home/jatorresmo/Documents/Experimento1/MIniAlu/tb.v" Line 13: Size mismatch in connection of port <wResult>. Formal port size is 1-bit while actual signal size is 4-bit.
-WARNING:HDLCompiler:189 - "/home/jatorresmo/Documents/Experimento1/MIniAlu/tb.v" Line 14: Size mismatch in connection of port <wCarry>. Formal port size is 1-bit while actual signal size is 4-bit.
 Completed static elaboration
-Fuse Memory Usage: 38560 KB
+Fuse Memory Usage: 38556 KB
 Fuse CPU Usage: 2310 ms
 Compiling module sumador
+Compiling module fila
 Compiling module testbench1
 Compiling module glbl
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-Compiled 3 Verilog Units
-Built simulation executable /home/jatorresmo/Documents/Experimento1/MIniAlu/testbench1_isim_beh.exe
-Fuse Memory Usage: 75452 KB
-Fuse CPU Usage: 2350 ms
-GCC CPU Usage: 650 ms
+Compiled 4 Verilog Units
+Built simulation executable /home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/testbench1_isim_beh.exe
+Fuse Memory Usage: 75448 KB
+Fuse CPU Usage: 2340 ms
+GCC CPU Usage: 860 ms

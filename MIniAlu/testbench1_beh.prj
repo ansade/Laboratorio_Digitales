@@ -1,3 +1,4 @@
 verilog work "sumador.v"
+verilog work "fila.v"
 verilog work "tb.v"
 verilog work "/opt/Xilinx/14.4/ISE_DS/ISE//verilog/src/glbl.v"

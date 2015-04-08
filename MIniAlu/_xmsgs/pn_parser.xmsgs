@@ -8,5 +8,37 @@
 <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/Collaterals.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/fila.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/sumador.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/tb.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MiniAlu.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MiniAlu.v</arg>&quot; Line <arg fmt="%d" index="2">3</arg>. <arg fmt="%s" index="3">Include file found: &apos;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/Defintions.v&apos; in file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MiniAlu.v&quot; line 3
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/Module_ROM.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/Module_ROM.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/Defintions.v&apos; in file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/Module_ROM.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/RAM.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/TestBench.v&quot; into library work</arg>
+</msg>
+
 </messages>
 
