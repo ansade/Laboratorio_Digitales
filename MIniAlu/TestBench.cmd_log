@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/TestBench.xst" -ofn "/home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/TestBench.syr" 

@@ -113,7 +113,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1428510568" xil_pn:in_ck="8498896787176569694" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1428510568">
+    <transform xil_pn:end_ts="1428511708" xil_pn:in_ck="8498896787176569694" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1428511708">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="../Collaterals.v"/>
@@ -138,7 +138,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1428510576" xil_pn:in_ck="8498896787176569694" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1428510576">
+    <transform xil_pn:end_ts="1428511708" xil_pn:in_ck="8498896787176569694" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1428511708">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="../Collaterals.v"/>
@@ -151,7 +151,7 @@
       <outfile xil_pn:name="sumador.v"/>
       <outfile xil_pn:name="tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1428510584" xil_pn:in_ck="8498896787176569694" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-3785914826968612175" xil_pn:start_ts="1428510576">
+    <transform xil_pn:end_ts="1428511714" xil_pn:in_ck="8498896787176569694" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-3785914826968612175" xil_pn:start_ts="1428511708">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -163,7 +163,7 @@
       <outfile xil_pn:name="testbench1_isim_beh.exe"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1428510585" xil_pn:in_ck="-4881874773000416" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="2887571121980443412" xil_pn:start_ts="1428510584">
+    <transform xil_pn:end_ts="1428511715" xil_pn:in_ck="-4881874773000416" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="2887571121980443412" xil_pn:start_ts="1428511714">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>

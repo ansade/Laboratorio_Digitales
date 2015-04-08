@@ -2,9 +2,9 @@
 module testbench1;
 	
 	//Inputs
-	reg OpA,OpB,OpC,OpD,carry0;
+	reg OpA,OpB,OpC,OpD,carry0,result0;
 	//Outputs
-	wire result , result2, result3,result4, carry1, carry2, carry3, carry4;
+	wire result , result2, result3,result4, carry1, carry2, carry3;
 	wire result5, result6, result7,result8;
 	wire result9, result10, result11,result12;
 	
@@ -50,10 +50,10 @@ module testbench1;
     .wSum4(OpB),
     .wSum5(result8),
     .wSum6(OpB),
-    .wSum7(carry3),
+    .wSum7(carry2),
     .wSum8(OpB),
     .wCarry_In(carry0),
-    .wCarry_Out(carry4),
+    .wCarry_Out(carry3),
     .wResult1(result9),
     .wResult2(result10),
     .wResult3(result11),
@@ -66,6 +66,7 @@ module testbench1;
 		OpB=1;
 		OpC=0;
 		OpD=0;
+		result0=1;
 		carry0=0;
 	end
 endmodule

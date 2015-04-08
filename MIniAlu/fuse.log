@@ -10,7 +10,7 @@ Analyzing Verilog file "/opt/Xilinx/14.4/ISE_DS/ISE//verilog/src/glbl.v" into li
 Starting static elaboration
 Completed static elaboration
 Fuse Memory Usage: 38556 KB
-Fuse CPU Usage: 2310 ms
+Fuse CPU Usage: 2380 ms
 Compiling module sumador
 Compiling module fila
 Compiling module testbench1
@@ -20,5 +20,5 @@ Waiting for 1 sub-compilation(s) to finish...
 Compiled 4 Verilog Units
 Built simulation executable /home/jatorresmo/Documents/Experimento2/Laboratorio_Digitales/MIniAlu/testbench1_isim_beh.exe
 Fuse Memory Usage: 75448 KB
-Fuse CPU Usage: 2340 ms
-GCC CPU Usage: 860 ms
+Fuse CPU Usage: 2410 ms
+GCC CPU Usage: 900 ms
