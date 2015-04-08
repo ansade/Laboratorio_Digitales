@@ -1,5 +1,8 @@
 `timescale 1ns / 1ps
 
+// Se declara un modulo
+
+
 module sumador  (
 
 input   OpA, 
@@ -18,43 +21,26 @@ assign  {carry_out,result}=OpA+OpB;
 
 endmodule
 
+// Se declara una fila 
 
 module fila ( 
+	result,
+	carry_out,
+	Opa,
+	Opb,
+	carry_in
+	);
 
-input   OpA, 
-input   OpB,
-input   OpA1, 
-input   OpB1,
-input   OpA2, 
-input   OpB2,
-input   OpA3, 
-input   OpB3,
+output wire result,carry_out;
+input wire Opa,Opb,carry_inin;
 
-input carry_in,
-
-output  result,
-output  result1,
-output  result2,
-output  result3,
-
-output carry_out3
-
-
-);
-
-sumador sum1 ( OpA,OpB,result,carry_in,carry_out);
-
-sumador sum2 ( OpA1,OpB1,result1,carry_out,carry_out1);
-
-sumador sum3 ( OpA2,OpB2,result2,carry_out1,carry_out2);
-
-sumador sum4 ( OpA3,OpB3,result3,carry_out2,carry_out3);
-
-
-
+	assign result=(Opa^Opb^carry_in);
+	assign carry_out=((Opa&Opb)|(Opa&carry_in)|(Opb&carry_in));
 
 endmodule
 
+
+/*
 
 
 module testbench;
@@ -75,7 +61,6 @@ wire  result;
 
 wire carry_out;
 wire carry_in;
-*/
 
 
 fila sum ( 
@@ -103,18 +88,18 @@ initial
 
 	begin
 	
-	OpA = 4'b 0010;
-	OpB = 4'b 1110;
-	OpA1 = 4'b 0110;
-	OpB1 = 4'b 1111;
-	OpA2 = 4'b 1010;
-	OpB2 = 4'b 1010;
-	OpA3 = 4'b 0000;
-	OpB3 = 4'b 1100;
+	OpA = 1;
+	OpB = 0;
+	OpA1 = 0;
+	OpB1 = 1;
+	OpA2 = 1;
+	OpB2 = 1;
+	OpA3 = 0;
+	OpB3 = 0;
 	
 
 
-$monitor ($time,,"Result =%b,Result1 =%b, Result2 =%b, Result3 =%b, Carry_in=%b, Carry_out=%b,OpA=%b, OpB=%b,OpA1=%b, OpB1=%b, OpA2=%b, OpB2=%b, OpA3=%b, OpB3=%b ", result,result1,result2,result3,carry_in,carry_out3,OpA,OpB,OpA1,OpB1,OpA2,OpB2,OpA3,OpB3);
+$monitor ($time,,"Result =%d,Result1 =%d, Result2 =%d, Result3 =%d, Carry_in=%d, Carry_out=%d,OpA=%d, OpB=%d,OpA1=%d, OpB1=%d, OpA2=%d, OpB2=%d, OpA3=%d, OpB3=%d ", result,result1,result2,result3,carry_in,carry_out3,OpA,OpB,OpA1,OpB1,OpA2,OpB2,OpA3,OpB3);
 
 #10 $finish;
 
@@ -124,4 +109,42 @@ $monitor ($time,,"Result =%b,Result1 =%b, Result2 =%b, Result3 =%b, Carry_in=%b,
 
 
 endmodule
+*/
+
+
+module HA(sout,cout,a,b);
+output sout,cout;
+input a,b;
+assign sout=a^b;
+assign cout=(a&b);
+endmodule
+
+module FA(sout,cout,a,b,cin);
+output sout,cout;
+input a,b,cin;
+assign sout=(a^b^cin);
+assign cout=((a&b)|(a&cin)|(b&cin));
+endmodule
+
+
+module multiply4bits(product,inp1,inp2);
+output [7:0]product;
+input [3:0]inp1;
+input [3:0]inp2;
+assign product[0]=(inp1[0]&inp2[0]);
+wire x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16,x17;
+HA HA1(product[1],x1,(inp1[1]&inp2[0]),(inp1[0]&inp2[1]));
+FA FA1(x2,x3,inp1[1]&inp2[1],(inp1[0]&inp2[2]),x1);
+FA FA2(x4,x5,(inp1[1]&inp2[2]),(inp1[0]&inp2[3]),x3);
+HA HA2(x6,x7,(inp1[1]&inp2[3]),x5);
+HA HA3(product[2],x15,x2,(inp1[2]&inp2[0]));
+FA FA5(x14,x16,x4,(inp1[2]&inp2[1]),x15);
+FA FA4(x13,x17,x6,(inp1[2]&inp2[2]),x16);
+FA FA3(x9,x8,x7,(inp1[2]&inp2[3]),x17);
+HA HA4(product[3],x12,x14,(inp1[3]&inp2[0]));
+FA FA8(product[4],x11,x13,(inp1[3]&inp2[1]),x12);
+FA FA7(product[5],x10,x9,(inp1[3]&inp2[2]),x11);
+FA FA6(product[6],product[7],x8,(inp1[3]&inp2[3]),x10);
+endmodule
+
 
