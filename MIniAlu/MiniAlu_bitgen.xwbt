@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=/home/jatorresmo/Documents/Experimento1/MIniAlu/MiniAlu.ncd
-OUTFILE=/home/jatorresmo/Documents/Experimento1/MIniAlu/MiniAlu.bit
-FAMILY=Spartan3E
-PART=xc3s500e-4fg320
-WORKINGDIR=/home/jatorresmo/Documents/Experimento1/MIniAlu
-LICENSE=ISE
-USER_INFO=174162558_174162559_210553509_201

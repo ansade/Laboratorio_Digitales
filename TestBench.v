@@ -27,6 +27,7 @@ module TestBench;
 	// Inputs
 	reg Clock;
 	reg Reset;
+	reg Reset2;
 
 	// Outputs
 	wire [7:0] oLed;
@@ -35,7 +36,8 @@ module TestBench;
 	MiniAlu uut (
 		.Clock(Clock), 
 		.Reset(Reset), 
-		.oLed(oLed)
+		.oLed(oLed),
+		.Reset2(Reset2)
 	);
 	
 	always
@@ -45,13 +47,18 @@ module TestBench;
 
 	initial begin
 		// Initialize Inputs
-		Clock = 0;
-		Reset = 0;
+		Clock  = 0;
+		Reset  = 0;
+		Reset2 = 0;
 
 		// Wait 100 ns for global reset to finish
-		#100;
-		Reset = 1;
 		#50
+		Reset2 = 1;
+		#50
+		Reset2 = 0;		
+		#50;
+		Reset = 1;
+		#100
 		Reset = 0;
         
 		// Add stimulus here

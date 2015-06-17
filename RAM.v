@@ -16,13 +16,14 @@ reg [DATA_WIDTH-1:0] Ram [MEM_SIZE:0];
 
 always @(posedge Clock) 
 begin 
+	//////// FIX for PIPELINE
+	//In case we try to read the value we are being told to write, give that value back
+	// Else, just give the data stored
+	oDataOut0 <=  ((iWriteAddress == iReadAddress0) && iWriteEnable) ? iDataIn : Ram[iReadAddress0]; 
+	oDataOut1 <=  ((iWriteAddress == iReadAddress1) && iWriteEnable) ? iDataIn : Ram[iReadAddress1]; 
 	
-		if (iWriteEnable) 
-			Ram[iWriteAddress] <= iDataIn; 
-			
-	
-			oDataOut0 <= Ram[iReadAddress0]; 
-			oDataOut1 <= Ram[iReadAddress1]; 
+	if (iWriteEnable) 
+		Ram[iWriteAddress] <=  iDataIn; 
 		
 end 
 endmodule

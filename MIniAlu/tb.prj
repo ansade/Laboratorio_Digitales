@@ -1,7 +1,0 @@
-verilog work "../RAM.v"
-verilog work "../Module_ROM.v"
-verilog work "../Collaterals.v"
-verilog work "sumador.v"
-verilog work "../MiniAlu.v"
-verilog work "../TestBench.v"
-verilog work "tb.v"
