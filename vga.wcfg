@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/sebas/Documents/GIT/ALU/miniALU/MiniALU/TestBench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="TestBench" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/TestBench/oLed" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">oLed[7:0]</obj_property>
+      <obj_property name="ObjectShortName">oLed[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/Clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Clock</obj_property>
+      <obj_property name="ObjectShortName">Clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wClk25" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wClk25</obj_property>
+      <obj_property name="ObjectShortName">wClk25</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/Reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Reset</obj_property>
+      <obj_property name="ObjectShortName">Reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/Reset2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Reset2</obj_property>
+      <obj_property name="ObjectShortName">Reset2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/DataRam/iWriteEnable" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iWriteEnable</obj_property>
+      <obj_property name="ObjectShortName">iWriteEnable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/rResult" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rResult[15:0]</obj_property>
+      <obj_property name="ObjectShortName">rResult[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wIP" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wIP[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wIP[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wOperation" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wOperation[3:0]</obj_property>
+      <obj_property name="ObjectShortName">wOperation[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wDestination" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wDestination[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wDestination[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wSourceAddr1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wSourceAddr1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wSourceAddr1[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wSourceAddr0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wSourceAddr0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wSourceAddr0[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wSourceData1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wSourceData1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wSourceData1[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wSourceData0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wSourceData0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wSourceData0[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/DataRam/iReadAddress1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">iReadAddress1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">iReadAddress1[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/DataRam/iReadAddress0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">iReadAddress0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">iReadAddress0[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/rVGAWritEnable" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rVGAWritEnable</obj_property>
+      <obj_property name="ObjectShortName">rVGAWritEnable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/VGA_HSYNC" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">VGA_HSYNC</obj_property>
+      <obj_property name="ObjectShortName">VGA_HSYNC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/VGA_VSYNC" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">VGA_VSYNC</obj_property>
+      <obj_property name="ObjectShortName">VGA_VSYNC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/VGA_RED" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">VGA_RED</obj_property>
+      <obj_property name="ObjectShortName">VGA_RED</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/VGA_GREEN" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">VGA_GREEN</obj_property>
+      <obj_property name="ObjectShortName">VGA_GREEN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/VGA_BLUE" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">VGA_BLUE</obj_property>
+      <obj_property name="ObjectShortName">VGA_BLUE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/VideoMemory/iWriteEnable" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iWriteEnable</obj_property>
+      <obj_property name="ObjectShortName">iWriteEnable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/wVGAWriteAddress" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wVGAWriteAddress[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wVGAWriteAddress[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/VideoMemory/iDataIn" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">iDataIn[2:0]</obj_property>
+      <obj_property name="ObjectShortName">iDataIn[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/vgac/wCurrentRow" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wCurrentRow[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wCurrentRow[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench/uut/vgac/wCurrentCol" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wCurrentCol[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wCurrentCol[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>
