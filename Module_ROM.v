@@ -24,7 +24,47 @@ module ROM
 always @ ( iAddress )
 begin
 	case (iAddress)
+	//LCD Program
+	0: oInstruction = { `NOP , 24'd0 };
+	1: oInstruction = { `BBU , 8'd1, 16'd0 };
+	2: oInstruction = { `LCD , 8'b0, `LOAD,`SDR1};
+	3: oInstruction = { `NOP , 24'd0 };
+	4: oInstruction = { `BBU , 8'd1, 16'd3 };
 	
+	//LCD "Hello World"
+	5: oInstruction = { `LCD , 8'b0, `WRITE,`H};
+	6: oInstruction = { `NOP , 24'd0 };
+	7: oInstruction = { `BBU , 8'd1, 16'd6 };
+	8: oInstruction = { `LCD , 8'b0, `WRITE,`E};
+	9: oInstruction = { `NOP , 24'd0 };
+	10: oInstruction = { `BBU , 8'd1, 16'd9 };
+	11: oInstruction = { `LCD , 8'b0, `WRITE,`L};
+	12: oInstruction = { `NOP , 24'd0 };
+	13: oInstruction = { `BBU , 8'd1, 16'd12 };
+	14: oInstruction = { `LCD , 8'b0, `WRITE,`L};
+	15: oInstruction = { `NOP , 24'd0 };
+	16: oInstruction = { `BBU , 8'd1, 16'd15 };
+	17: oInstruction = { `LCD , 8'b0, `WRITE,`O};
+	18: oInstruction = { `NOP , 24'd0 };
+	19: oInstruction = { `BBU , 8'd1, 16'd18 };
+	20: oInstruction = { `LCD , 8'b0, `WRITE,`SPACE};
+	21: oInstruction = { `NOP , 24'd0 };
+	22: oInstruction = { `BBU , 8'd1, 16'd21 };
+	23: oInstruction = { `LCD , 8'b0, `WRITE,`W};
+	24: oInstruction = { `NOP , 24'd0 };
+	25: oInstruction = { `BBU , 8'd1, 16'd24 };
+	26: oInstruction = { `LCD , 8'b0, `WRITE,`O};
+	27: oInstruction = { `NOP , 24'd0 };
+	28: oInstruction = { `BBU , 8'd1, 16'd27 };
+	29: oInstruction = { `LCD , 8'b0, `WRITE,`R};
+	30: oInstruction = { `NOP , 24'd0 };
+	31: oInstruction = { `BBU , 8'd1, 16'd30 };
+	32: oInstruction = { `LCD , 8'b0, `WRITE,`L};
+	33: oInstruction = { `NOP , 24'd0 };
+	34: oInstruction = { `BBU , 8'd1, 16'd33 };
+	35: oInstruction = { `LCD , 8'b0, `WRITE,`D};
+		
+	/*//VGA Test Program
 	0: oInstruction = { `NOP ,	24'd4000	};
 	1: oInstruction = { `STO , `COLS_SIZE, 16'd99};
 	2: oInstruction = { `STO , `ROWS_SIZE, 16'd99};
@@ -45,7 +85,10 @@ begin
 	//infinite loop
 	11: oInstruction = { `NOP ,	24'd4000	};
 	12: oInstruction = { `JMP , `INFLOOP, 16'b0};
-	/*1: oInstruction = { `STO , `COLS, 16'b0};
+	*/
+	
+	/*//Professor program
+	1: oInstruction = { `STO , `COLS, 16'b0};
 	2: oInstruction = { `STO , `ROWS, 16'b0};
 	3: oInstruction = { `STO , `ONE, 16'b1};
 	4: oInstruction = { `STO , `COLS_SIZE, 16'd100};

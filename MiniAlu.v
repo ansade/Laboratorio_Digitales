@@ -1,6 +1,7 @@
 
 `timescale 1ns / 1ps
 `include "Defintions.v"
+`default_nettype none
 
 
 module MiniAlu
@@ -13,11 +14,19 @@ module MiniAlu
  output wire VGA_VSYNC, 
  output wire VGA_RED, 
  output wire VGA_GREEN, 
- output wire VGA_BLUE 
+ output wire VGA_BLUE,
+ output wire LCD_E,
+ output wire LCD_RS,
+ output wire LCD_RW,
+ output wire SF_CE0,
+ output wire SF_D<8>,
+ output wire SF_D<9>,
+ output wire SF_D<10>,
+ output wire SF_D<11>, 
 );
 
 wire [15:0]  wIP,wIP_temp,wIP_Return,wreturn_routine;
-reg  rWriteEnable,rVGAWritEnable,rBranchTaken,rSubrutineCall,rRTS;
+reg  rWriteEnable,rVGAWriteEnable,rBranchTaken,rSubrutineCall,rRTS,rRequest;
 wire [15:0] wReadRAMAddress,wVGAWriteAddress ;
 wire [27:0] wInstruction;
 wire [3:0]  wOperation;
@@ -25,8 +34,15 @@ reg [15:0]   rResult;
 wire [7:0]  wSourceAddr0,wSourceAddr1,wDestination;
 wire signed [15:0] wSourceData0,wSourceData1,wIPInitialValue,wImmediateValue;
 
-//Cables Para el monitor VGA
+//VGA wires
 wire wClk25,wVGA_R,wVGA_G,wVGA_B;
+
+//LCD wires
+wire [26:0] wROMlcd;
+wire [3:0] wLCD_Data;
+wire [5:0] wLCDAdd;
+wire wBusy;
+wire [15:0] wLCDinstruction;
 
 
 ROM InstructionRom 
@@ -46,6 +62,9 @@ RAM_DUAL_READ_PORT DataRam
 	.oDataOut0(     wSourceData0 ),
 	.oDataOut1(     wSourceData1 )
 );
+
+assign wreturn_routine = (rRTS)? wIP_Return : wDestination;
+assign wIP = (rBranchTaken) ?   wIPInitialValue : wIP_temp;
 
 assign wIPInitialValue = (Reset) ? 8'b0 : wreturn_routine;
 UPCOUNTER_POSEDGE IP
@@ -70,7 +89,7 @@ UPCOUNTER_POSEDGE # (1) Clk25(
 //Ram de video
 RAM_SINGLE_READ_PORT # (.DATA_WIDTH(3),.ADDR_WIDTH(16),.MEM_SIZE(16384)) VideoMemory(
 	.Clock( Clock ),
-	.iWriteEnable( rVGAWritEnable ),
+	.iWriteEnable( rVGAWriteEnable ),
 	.iReadAddress( wReadRAMAddress),
 	.iWriteAddress( wVGAWriteAddress ),//wSourceData0 ),
 	.iDataIn( wDestination[2:0] ),
@@ -80,7 +99,7 @@ RAM_SINGLE_READ_PORT # (.DATA_WIDTH(3),.ADDR_WIDTH(16),.MEM_SIZE(16384)) VideoMe
 //
 assign wVGAWriteAddress = wSourceData1*100 + wSourceData0;
 
-// Se instancia el VGA controller
+//VGA controller
 
 VGAcontroller vgac(
 		.iClk25M(wClk25),
@@ -94,9 +113,39 @@ VGAcontroller vgac(
 		.oReadRAMAddress(wReadRAMAddress)
 	);
 
+//LCD Controller and its ROM
 
-assign wreturn_routine = (rRTS)? wIP_Return : wDestination;
-assign wIP = (rBranchTaken) ?   wIPInitialValue : wIP_temp;
+LCD_Controller lcd_control(
+		.iRequest(rRequest),
+		.Clock(Clock),
+		.Reset(Reset),
+		.iROMdata(wROMlcd),
+		.oLCD_Enabled(LCD_E),
+		.oLCD_RegisterSelect(LCD_RS), 
+		.oLCD_StrataFlashControl(SF_CE0),
+		.oLCD_ReadWrite(LCD_RW),
+		.oLCD_Data(wLCD_Data),
+		.oROMaddress(wLCDAdd),
+		.oBusy(wBusy)
+	);
+	
+LCD_ROM lcd_rom(
+		.iRequest(rRequest),
+		.iAddress(wLCDAdd),
+		.iALUinstruct(wLCDinstruction),
+		.oInstruction(wROMlcd)
+	);
+
+assign {SF_D<11>,SF_D<10>,SF_D<9>,SF_D<8>} = wLCD_Data;	
+
+FFD_POSEDGE_SYNCRONOUS_RESET # ( 16 ) FF_LCD
+(
+	.Clock(Clock),
+	.Reset(Reset),
+	.Enable(rRequest),
+	.D(wImmediateValue),
+	.Q(wLCDinstruction)
+);
 
 FFD_POSEDGE_SYNCRONOUS_RESET # ( 8 ) FFD1 
 (
@@ -169,7 +218,8 @@ begin
 		rResult        <= 0;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------
 	`ADD:
@@ -180,7 +230,8 @@ begin
 		rResult        <= wSourceData1 + wSourceData0;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------
 	`SUB:
@@ -191,7 +242,8 @@ begin
 		rResult        <= wSourceData1 - wSourceData0;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------
 	`SMUL:
@@ -202,7 +254,8 @@ begin
 		rResult        <= wSourceData1 * wSourceData0;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------	
 	`STO:
@@ -213,7 +266,8 @@ begin
 		rResult        <= wImmediateValue;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------
 	`BLE:
@@ -227,7 +281,8 @@ begin
 			rBranchTaken <= 1'b0;
 		rSubrutineCall  <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------	
 	`JMP:
@@ -238,7 +293,8 @@ begin
 		rBranchTaken   <= 1'b1;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------	
 	`SHL:
@@ -250,7 +306,8 @@ begin
 		rRTS           <= 1'b0;
 		rResult        <= wSourceData1 << wInstruction[7:0];
 		//rResult        <= wSourceData1 << 4;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	
 	//-------------------------------------
@@ -262,7 +319,8 @@ begin
 		rBranchTaken   <= 1'b1;
 		rSubrutineCall <= 1'b1;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------
 	`RET:
@@ -273,7 +331,8 @@ begin
 		rBranchTaken   <= 1'b1;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b1;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	
 	//-------------------------------------	
@@ -285,7 +344,8 @@ begin
 		rBranchTaken   <= 1'b0;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------	
 	`VGA:
@@ -296,7 +356,35 @@ begin
 		rBranchTaken   <= 1'b0;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b1;
+		rVGAWriteEnable <= 1'b1;
+		rRequest       <= 1'b0;
+	end
+	//-------------------------------------
+	`LCD:
+	begin
+		rFFLedEN       <= 1'b0;
+		rWriteEnable   <= 1'b0;
+		rBranchTaken   <= 1'b0;
+		rResult        <= 0;
+		rSubrutineCall <= 1'b0;
+		rRTS           <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b1;
+	end
+	//-------------------------------------
+	`BBU: //Branch if Busy 
+	begin
+		rFFLedEN        <= 1'b0;
+		rWriteEnable    <= 1'b0;
+		rResult         <= 0;
+		if (wBusy)
+			rBranchTaken <= 1'b1;
+		else
+			rBranchTaken <= 1'b0;
+		rSubrutineCall  <= 1'b0;
+		rRTS           <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end
 	//-------------------------------------
 	default:
@@ -307,7 +395,8 @@ begin
 		rBranchTaken   <= 1'b0;
 		rSubrutineCall <= 1'b0;
 		rRTS           <= 1'b0;
-		rVGAWritEnable <= 1'b0;
+		rVGAWriteEnable <= 1'b0;
+		rRequest       <= 1'b0;
 	end	
 	//-------------------------------------	
 	endcase	

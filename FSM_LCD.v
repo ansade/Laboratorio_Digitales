@@ -233,12 +233,12 @@ module LCD_ROM(
 	
 	//Instuction from ALU
 	reg [2:0] wOp;
-	reg [3:0] wPA;
-	reg [3:0] wPB;
+	reg [3:0] wUN; //Upper nibble
+	reg [3:0] wLN; //Lower nibble
 	
 	//Upon request update instruction registers
-	always@(posedge iRequest)
-		{wOp,wPA,wPB} = iALUinstruct[10:0];
+	//always@(posedge iRequest)
+	{wOp,wUN,wLN} = iALUinstruct[10:0];
 		
 	
 	//ROM	
@@ -258,16 +258,16 @@ module LCD_ROM(
 		//Configuration-----------------------------------------------------	
 			//Function Set: Load 0x28
 			4: oInstruction = { `LOAD  ,4'h2,`TAI }; 
-			5: oInstruction = { `LOAD  ,4'h8,`TBI   };
+			5: oInstruction = { `LOAD  ,4'h8,`TBI };
 			//Entry Mode Set: Load 0x06 
 			6: oInstruction = { `LOAD  ,4'h0,`TAI };  	
-			7: oInstruction = { `LOAD  ,4'h6,`TBI   }; 
+			7: oInstruction = { `LOAD  ,4'h6,`TBI }; 
 			//Display On/Off: Load 0x0C
 			8: oInstruction = { `LOAD  ,4'h0,`TAI  };  
-			9: oInstruction = { `LOAD  ,4'hC,`TBI    };  
+			9: oInstruction = { `LOAD  ,4'hC,`TBI  };  
 			//Clear: Load 0x01
 			10: oInstruction = { `LOAD  ,4'h0,`TAI };  
-			11: oInstruction = { `LOAD  ,4'h1,`TBI   };	
+			11: oInstruction = { `LOAD  ,4'h1,`TBI };	
 			
 		//IDDLE	
 			
@@ -275,16 +275,16 @@ module LCD_ROM(
 		
 		//Mini Alu instructions	
 		//Loop 
-			13: oInstruction = { wOp ,wPA,20'd0 };
-			14: oInstruction = { wOp ,wPB,`TBI };
+			13: oInstruction = { wOp ,wUN,20'd0 };
+			14: oInstruction = { wOp ,wLN,`TBI };
 		
 		//Go back to iddle 	
 			15: oInstruction = { `IDLE ,4'h0,`TAI}; 
 			
 			/*
-			//Set DD-RAM: 0x08
-			12: oInstruction = { `LOAD  ,4'h0,20'd82000}; 
-			13: oInstruction = { `LOAD  ,4'h8,20'd50   };
+			//Set DD-RAM: 0x80
+			12: oInstruction = { `LOAD  ,4'h8,20'd82000}; 
+			13: oInstruction = { `LOAD  ,4'h0,20'd50   };
 			
 			//Write H: 0x48
 			14: oInstruction = { `WRITE ,4'h4,20'd2000 };

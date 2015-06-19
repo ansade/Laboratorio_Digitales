@@ -17,9 +17,11 @@
 `define RET   4'd10
 `define SHL   4'd11
 `define VGA   4'd12
+`define BBU  4'd13
+`define LCD	  4'd14
 
 
-//Registros
+//RAM Registers
 `define R0 8'd0
 `define R1 8'd1
 `define R2 8'd2
@@ -29,7 +31,7 @@
 `define R6 8'd6
 `define R7 8'd7
 
-//Colores
+//Colors
 `define COLOR_BLACK   3'b000
 `define COLOR_BLUE    3'b001
 `define COLOR_GREEN   3'b010
@@ -39,5 +41,27 @@
 `define COLOR_YELLOW  3'b110
 `define COLOR_WHITE   3'b111
 
+//LCD opcodes
+//Write Data to DD-RAM
+`define SPACE 8'h20
+`define H 8'h48
+`define E 8'h45
+`define L 8'h4C
+`define O 8'h4F
+`define W 8'h57
+`define R 8'h52
+`define D 8'h44
+//Clear display
+`define CLR 8'h01 //Needs a nop of at least 1.64 ms!!!!
+//Set DD-RAM address
+`define SDR1 8'h80 //first line first column 0x00
+`define SDR2 8'hC0 //second line first column 0x40
+//Shift Display
+`define 8'h18 //left
+`define 8'h1C //right
+
+//LCD States
+`define WRITE 	8'd02
+`define LOAD	8'd03
 
 `endif
